@@ -5,6 +5,9 @@ import javax.jws.soap.SOAPBinding;
 
 /*Collection
  *      --------List:元素是有序的，元素可以重复，因为该集合体系有索引
+ *              ------ArrayList:底层的数据结构使用的是数组结构,特点:查询速度很快，但是增删稍慢，线程不同步.
+ *              ------LinkedList:底层使用的是链表数据结构. 特点：增删速度很快，查询稍慢.
+ *              ------Vector:底层是数组数据结构，线程同步.
  *      --------Set:元素是无序的，元素不可以重复
  */
 
@@ -25,6 +28,13 @@ import javax.jws.soap.SOAPBinding;
  * 的操作。如果想要进行其他操作如添加，修改等，就需要使用其
  * 子接口ListIterator。该接口只能通过List集合的 的ListIterator()
  * 获取
+ */
+
+/*
+ * List集合判读元素是否相同,依据的是元素的equals()方法,无论是contains()或remove()
+ * 方法，都依赖于equals()方法.
+ * 
+ * 
  */
 
 public class ListDemo {

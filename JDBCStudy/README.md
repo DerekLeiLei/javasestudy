@@ -1,2 +1,0 @@
-# javasestudy
-JavaSE studying project
