@@ -1,35 +1,35 @@
 package package1;
 
 /*
- * StringÀàÊÊÓÃÓÚÃèÊö×Ö·û´®ÊÂÎï
- * Ò»µ©³õÊ¼»¯¾Í²»ÄÜ±ä
+ * Stringç±»é€‚ç”¨äºæè¿°å­—ç¬¦ä¸²äº‹ç‰©
+ * ä¸€æ—¦åˆå§‹åŒ–å°±ä¸èƒ½å˜
  * 
- * ³£¼û²Ù×÷:
+ * å¸¸è§æ“ä½œ:
  * 
- * 1,»ñÈ¡
- *   int length();»ñÈ¡×Ö·û´®µÄ³¤¶È
- *   char charAt(int index);»ñÈ¡indexÎ»ÖÃÉÏµÄ×Ö·û
- *   int indexOf(int ch);»ñÈ¡×Ö·ûchÔÚ×Ö·û´®ÖĞµÄÎ»ÖÃ
- *   int indexOf(String str);»ñÈ¡strÔÚ×Ö·û´®ÖĞµÚÒ»´Î³öÏÖµÄÎ»ÖÃ
- * 2,ÅĞ¶Ï
- *   boolean contains(str);×Ö·û´®ÖĞÊÇ·ñ°üº¬str
- *   boolean isEmpty();×Ö·û´®ÊÇ·ñÎª¿Õ
- *   boolean startsWith(str);×Ö·û´®ÊÇ·ñÒÔstr¿ªÍ·
- *   boolean endsWith(str);×Ö·û´®ÊÇ·ñÒÔstr½áÎ²
- *   boolean equals(str);ÅĞ¶Ï×Ö·û´®ÄÚÈİÊÇ·ñÏàÍ¬
- *   boolean equalsIgnoreCase();ÅĞ¶ÏÊÇ·ñÏàÍ¬ºöÂÔ´óĞ¡Ğ´
- * 3,×ª»»
+ * 1,è·å–
+ *   int length();è·å–å­—ç¬¦ä¸²çš„é•¿åº¦
+ *   char charAt(int index);è·å–indexä½ç½®ä¸Šçš„å­—ç¬¦
+ *   int indexOf(int ch);è·å–å­—ç¬¦chåœ¨å­—ç¬¦ä¸²ä¸­çš„ä½ç½®
+ *   int indexOf(String str);è·å–stråœ¨å­—ç¬¦ä¸²ä¸­ç¬¬ä¸€æ¬¡å‡ºç°çš„ä½ç½®
+ * 2,åˆ¤æ–­
+ *   boolean contains(str);å­—ç¬¦ä¸²ä¸­æ˜¯å¦åŒ…å«str
+ *   boolean isEmpty();å­—ç¬¦ä¸²æ˜¯å¦ä¸ºç©º
+ *   boolean startsWith(str);å­—ç¬¦ä¸²æ˜¯å¦ä»¥strå¼€å¤´
+ *   boolean endsWith(str);å­—ç¬¦ä¸²æ˜¯å¦ä»¥strç»“å°¾
+ *   boolean equals(str);åˆ¤æ–­å­—ç¬¦ä¸²å†…å®¹æ˜¯å¦ç›¸åŒ
+ *   boolean equalsIgnoreCase();åˆ¤æ–­æ˜¯å¦ç›¸åŒå¿½ç•¥å¤§å°å†™
+ * 3,è½¬æ¢
  *   String(char[]);
- *   char[] toCharArray();½«×Ö·û´®×ª»¯Îª×Ö·ûÊı×é
- *   static String valueOf(type);½«»ù±¾ÀàĞÍ×ª»¯Îª×Ö·û´®
- * 4,Ìæ»»
+ *   char[] toCharArray();å°†å­—ç¬¦ä¸²è½¬åŒ–ä¸ºå­—ç¬¦æ•°ç»„
+ *   static String valueOf(type);å°†åŸºæœ¬ç±»å‹è½¬åŒ–ä¸ºå­—ç¬¦ä¸²
+ * 4,æ›¿æ¢
  *   String replace(olderchar,newchar);
- * 5,ÇĞ¸î
+ * 5,åˆ‡å‰²
  *   String[] split(regex);
- * 7,»ñÈ¡×Ó×Ö·û´®
+ * 7,è·å–å­å­—ç¬¦ä¸²
  *   String subString(begin);
  *   String subString(begin,end);
- * 8,ÆäËû
+ * 8,å…¶ä»–
  *   String toUpperCase();
  *   String toLowerCase();
  *   String trim();
@@ -39,34 +39,34 @@ package package1;
 
 
 /*
-  StringBufferÊÇ×Ö·û´®»º³åÇø£¬ÊÇÒ»¸öÈİÆ÷¡£
-  ÌØµã:
-  1, ³¤¶ÈÊÇ¿ÉÒÔ±ä»¯µÄ
-  2£¬¿ÉÒÔ²Ù×÷¶à¸öÊı¾İÀàĞÍ
-  3£¬×îÖÕ»áÍ¨¹ıtoString·½·¨±ä³É×Ö·û´®
+  StringBufferæ˜¯å­—ç¬¦ä¸²ç¼“å†²åŒºï¼Œæ˜¯ä¸€ä¸ªå®¹å™¨ã€‚
+  ç‰¹ç‚¹:
+  1, é•¿åº¦æ˜¯å¯ä»¥å˜åŒ–çš„
+  2ï¼Œå¯ä»¥æ“ä½œå¤šä¸ªæ•°æ®ç±»å‹
+  3ï¼Œæœ€ç»ˆä¼šé€šè¿‡toStringæ–¹æ³•å˜æˆå­—ç¬¦ä¸²
   
-   1£¬´æ´¢
-      StringBuffer append(); ½«Ö¸¶¨Êı¾İ×÷Îª²ÎÊıÌí¼Óµ½ÒÑÓĞÊı¾İ½áÎ²´¦
-      StringBuffer insert(index,Êı¾İ); ¿ÉÒÔ½«Êı¾İ²åÈëµ½Ö¸¶¨indexÎ»ÖÃ
-   2, É¾³ı
-      StringBuffer delete(start,end); É¾³ı»º³åÇøÖĞµÄÊı¾İ£¬°üº¬start£¬²»°üº¬end
-      StringBuffer deleteCharAt(index); É¾³ıÖ¸¶¨Î»ÖÃµÄ×Ö·û
-   3, »ñÈ¡
+   1ï¼Œå­˜å‚¨
+      StringBuffer append(); å°†æŒ‡å®šæ•°æ®ä½œä¸ºå‚æ•°æ·»åŠ åˆ°å·²æœ‰æ•°æ®ç»“å°¾å¤„
+      StringBuffer insert(index,æ•°æ®); å¯ä»¥å°†æ•°æ®æ’å…¥åˆ°æŒ‡å®šindexä½ç½®
+   2, åˆ é™¤
+      StringBuffer delete(start,end); åˆ é™¤ç¼“å†²åŒºä¸­çš„æ•°æ®ï¼ŒåŒ…å«startï¼Œä¸åŒ…å«end
+      StringBuffer deleteCharAt(index); åˆ é™¤æŒ‡å®šä½ç½®çš„å­—ç¬¦
+   3, è·å–
       char charAt(int index);
       int indexOf(String str);
       int lastIndexOf(String str);
       int length();
       String subString(int start, int end);
-    4,ĞŞ¸Ä
+    4,ä¿®æ”¹
       StringBuffer replace(start,end,string);
       void setCharAt(int index, char ch);
-    5,ÆäËû
-      StringBuffer reverse(); ·´×ª×Ö·û´®
+    5,å…¶ä»–
+      StringBuffer reverse(); åè½¬å­—ç¬¦ä¸²
       
-      StringBufferÏß³ÌÍ¬²½
-      StringBuilderÏß³Ì²»Í¬²½
+      StringBufferçº¿ç¨‹åŒæ­¥
+      StringBuilderçº¿ç¨‹ä¸åŒæ­¥
       
-      ×Ö·û´®×ª»ù±¾Êı¾İÀàĞÍ:
+      å­—ç¬¦ä¸²è½¬åŸºæœ¬æ•°æ®ç±»å‹:
       int num = Integer.parseInt(str);
  */
 public class StringBufferDemo01 {
@@ -94,8 +94,8 @@ public class StringBufferDemo01 {
 	
 	public static void method_add(){
 		StringBuffer sber = new StringBuffer();
-		sber.append("À×ÀÚ,");
-		sber.append("ÄãÒª¼ÓÓÍ!");
+		sber.append("é›·ç£Š,");
+		sber.append("ä½ è¦åŠ æ²¹!");
 		sop(sber.toString());
 		
 	}

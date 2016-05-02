@@ -17,9 +17,9 @@ public class ArrayListTest1 {
 		list.add("java011");
 		list.add("java05");
 		list.add("java07");
-		System.out.println("Ô­À´¼¯ºÏµÄÔªËØ:"+list);
+		System.out.println("åŸæ¥é›†åˆçš„å…ƒç´ :"+list);
 		list = onlyElement(list);
-		System.out.println("´¦Àíºó¼¯ºÏµÄÔªËØ:"+list);
+		System.out.println("å¤„ç†åé›†åˆçš„å…ƒç´ :"+list);
 
 	}
 	

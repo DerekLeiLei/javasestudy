@@ -1,17 +1,17 @@
 package study;
 
 import java.util.*;
-/*Set����:��ŵ�Ԫ���������(��ȡ˳��һ��)�������ظ�.
- *   -----HashSet:�ײ����ݽṹ�ǹ�ϣ��.
- *Set���ϵĹ��ܺ�Collectionһ��.
+/*Set集合:存放的元素是无序的(存取顺序不一致)，不能重复.
+ *   -----HashSet:底层数据结构是哈希表.
+ *Set集合的功能和Collection一致.
  * 
- * HashSet����α�֤Ԫ�ص�Ψһ��:��ͨ��Ԫ�ص���������,
- * hashCode��equals�����.���Ԫ�ص�HashCodeֵ��ͬ����
- * ���ж��ж�equals�Ƿ�Ϊtrue.���Ԫ�ص�HashCodeֵ��ͬ��
- * �������equals.
+ * HashSet是如何保证元素的唯一性:是通过元素的两个方法,
+ * hashCode和equals来完成.如果元素的HashCode值相同，才
+ * 会判断判断equals是否为true.如果元素的HashCode值不同，
+ * 不会调用equals.
  * 
- * ע�⣬�����ж�Ԫ���Ƿ����(contains())���Լ�ɾ��(remove())�Ȳ����������ķ���
- * ��Ԫ�ص�hashCode��equals����
+ * 注意，对于判断元素是否存在(contains())，以及删除(remove())等操作，依赖的方法
+ * 是元素的hashCode和equals方法
  * 
  */
 

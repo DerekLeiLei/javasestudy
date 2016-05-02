@@ -2,29 +2,29 @@ package study;
 
 import java.util.LinkedList;
 
-/*LinkedListÌØÓĞµÄ·½·¨:
+/*LinkedListç‰¹æœ‰çš„æ–¹æ³•:
  * addFirst();
  * addLast();
  * 
  * getFirst();
  * getLast();
- * »ñÈ¡ÔªËØ£¬µ«²»É¾³ıÔªËØ£¬Èç¹û¼¯ºÏÖĞÃ»ÓĞÔªËØ£¬»á³öÏÖNoSuchElementException
+ * è·å–å…ƒç´ ï¼Œä½†ä¸åˆ é™¤å…ƒç´ ï¼Œå¦‚æœé›†åˆä¸­æ²¡æœ‰å…ƒç´ ï¼Œä¼šå‡ºç°NoSuchElementException
  * 
  * removeFirst();
  * removeLast();
- * »ñÈ¡ÔªËØ£¬µ«ÊÇÔªËØ»á±»É¾³ı£¬Èç¹û¼¯ºÏÖĞÃ»ÓĞÔªËØ£¬»á³öÏÖNoSuchElementException
+ * è·å–å…ƒç´ ï¼Œä½†æ˜¯å…ƒç´ ä¼šè¢«åˆ é™¤ï¼Œå¦‚æœé›†åˆä¸­æ²¡æœ‰å…ƒç´ ï¼Œä¼šå‡ºç°NoSuchElementException
  * 
- * Ìæ´ú·½·¨:
+ * æ›¿ä»£æ–¹æ³•:
  * offerFirst();
  * offerLast();
  * 
  * peekFirst();
  * peekLast();
- * »ñÈ¡ÔªËØ£¬µ«²»É¾³ıÔªËØ£¬Èç¹û¼¯ºÏÖĞÃ»ÓĞÔªËØ£¬»á·µ»ØNull
+ * è·å–å…ƒç´ ï¼Œä½†ä¸åˆ é™¤å…ƒç´ ï¼Œå¦‚æœé›†åˆä¸­æ²¡æœ‰å…ƒç´ ï¼Œä¼šè¿”å›Null
  * 
  * pollFirst();
  * pollLast();
- * »ñÈ¡ÔªËØ£¬µ«ÊÇÔªËØ»á±»É¾³ı£¬Èç¹û¼¯ºÏÖĞÃ»ÓĞÔªËØ£¬»á·µ»ØNull
+ * è·å–å…ƒç´ ï¼Œä½†æ˜¯å…ƒç´ ä¼šè¢«åˆ é™¤ï¼Œå¦‚æœé›†åˆä¸­æ²¡æœ‰å…ƒç´ ï¼Œä¼šè¿”å›Null
  */
 
 public class LinkedListDemo {
@@ -42,8 +42,8 @@ public class LinkedListDemo {
 		link.addFirst("java03");
 		link.addFirst("java04");
 		System.out.println(link);
-		System.out.println("»ñÈ¡ÔªËØ:");
-		// »ñÈ¡ÔªËØ
+		System.out.println("è·å–å…ƒç´ :");
+		// è·å–å…ƒç´ 
 		System.out.println("empty:" + link.isEmpty());
 		while (!link.isEmpty()) {
 			System.out.println(link.removeFirst());
@@ -56,7 +56,7 @@ public class LinkedListDemo {
 		link.offerLast("java02");
 		link.offerLast("java03");
 		link.offerLast("java04");
-		System.out.println("Ê¹ÓÃĞÂµÄ·½·¨:");
+		System.out.println("ä½¿ç”¨æ–°çš„æ–¹æ³•:");
 		System.out.println(link);
 		System.out.println(link.peekFirst());
 		System.out.println(link.peekFirst());
@@ -66,7 +66,7 @@ public class LinkedListDemo {
 		//
 		/*System.out.println(link.pollFirst());
 		System.out.println(link.pollFirst());*/
-		System.out.println("»ñÈ¡ÔªËØ:");
+		System.out.println("è·å–å…ƒç´ :");
 		while(!link.isEmpty()){
 			System.out.println(link.pollFirst());
 		}

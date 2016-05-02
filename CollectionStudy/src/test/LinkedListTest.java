@@ -28,7 +28,7 @@ public class LinkedListTest {
 		dl.myAdd("java02");
 		dl.myAdd("java03");
 		dl.myAdd("java04");
-		System.out.println("»ñÈ¡ÔªËØ:");
+		System.out.println("è·å–å…ƒç´ :");
 		while(!dl.isNull()){
 			System.out.println(dl.getElement());
 		}

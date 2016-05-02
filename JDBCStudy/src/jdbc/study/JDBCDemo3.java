@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /*
- * PreparedStatement½Ó¿Ú
- * #±íÊ¾Ô¤±àÒëµÄSQLÓï¾ä¶ÔÏó
- * #SQLÓï¾ä±»Ô¤±àÒë²¢´æ´¢ÔÚPreparedStatement¶ÔÏóÖĞ,
- * ÈÃºó¿ÉÒÔÊ¹ÓÃ´Ë¶ÔÏó¶à´Î¸ßĞ§µØÖ´ĞĞ¸ÃÓï¾ä¡£
+ * PreparedStatementæ¥å£
+ * #è¡¨ç¤ºé¢„ç¼–è¯‘çš„SQLè¯­å¥å¯¹è±¡
+ * #SQLè¯­å¥è¢«é¢„ç¼–è¯‘å¹¶å­˜å‚¨åœ¨PreparedStatementå¯¹è±¡ä¸­,
+ * è®©åå¯ä»¥ä½¿ç”¨æ­¤å¯¹è±¡å¤šæ¬¡é«˜æ•ˆåœ°æ‰§è¡Œè¯¥è¯­å¥ã€‚
  */
 public class JDBCDemo3 {
 	private final static String DRIVER = "com.mysql.jdbc.Driver";
@@ -24,18 +24,18 @@ public class JDBCDemo3 {
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			// ×¢ÒâSQLÓï¾äÓÃÕ¼Î»·û"?"´úÌæÁËÔ­À´µÄÖµ
+			// æ³¨æ„SQLè¯­å¥ç”¨å ä½ç¬¦"?"ä»£æ›¿äº†åŸæ¥çš„å€¼
 			String sql = "insert into person(name,age,description) values(?,?,?)";
-			// »ñÈ¡PreparedStatement½Ó¿ÚµÄÊµÀı£¬×¢ÒâÒª½«sql×÷Îª²ÎÊı´«Èë
+			// è·å–PreparedStatementæ¥å£çš„å®ä¾‹ï¼Œæ³¨æ„è¦å°†sqlä½œä¸ºå‚æ•°ä¼ å…¥
 			pstate = con.prepareStatement(sql);
-			// ÉèÖÃÒª´«ÈëµÄÖµ´úÌæÉÏÎÄsqlÓï¾äÖĞµÄ"?"
-			// ×¢ÒâË÷Òı´Ó1¿ªÊ¼
+			// è®¾ç½®è¦ä¼ å…¥çš„å€¼ä»£æ›¿ä¸Šæ–‡sqlè¯­å¥ä¸­çš„"?"
+			// æ³¨æ„ç´¢å¼•ä»1å¼€å§‹
 			pstate.setString(1, p.getName());
 			pstate.setInt(2, p.getAge());
 			pstate.setString(3, p.getDescription());
-			// Ö´ĞĞsqlÓï¾ä£¬×¢Òâ²»Òª´«µİ²ÎÊı
+			// æ‰§è¡Œsqlè¯­å¥ï¼Œæ³¨æ„ä¸è¦ä¼ é€’å‚æ•°
 			pstate.executeUpdate();
-			System.out.println("²åÈë³É¹¦!");
+			System.out.println("æ’å…¥æˆåŠŸ!");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -57,17 +57,17 @@ public class JDBCDemo3 {
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			// ×¢ÒâSQLÓï¾äÓÃÕ¼Î»·û"?"´úÌæÁËÔ­À´µÄÖµ
+			// æ³¨æ„SQLè¯­å¥ç”¨å ä½ç¬¦"?"ä»£æ›¿äº†åŸæ¥çš„å€¼
 			String sql = "update person set description = ? where name =?";
-			// »ñÈ¡PreparedStatement½Ó¿ÚµÄÊµÀı£¬×¢ÒâÒª½«sql×÷Îª²ÎÊı´«Èë
+			// è·å–PreparedStatementæ¥å£çš„å®ä¾‹ï¼Œæ³¨æ„è¦å°†sqlä½œä¸ºå‚æ•°ä¼ å…¥
 			pstate = con.prepareStatement(sql);
-			// ÉèÖÃÒª´«ÈëµÄÖµ´úÌæÉÏÎÄsqlÓï¾äÖĞµÄ"?"
-			// ×¢ÒâË÷Òı´Ó1¿ªÊ¼
+			// è®¾ç½®è¦ä¼ å…¥çš„å€¼ä»£æ›¿ä¸Šæ–‡sqlè¯­å¥ä¸­çš„"?"
+			// æ³¨æ„ç´¢å¼•ä»1å¼€å§‹
 			pstate.setString(1, p.getDescription());
 			pstate.setString(2, p.getName());
-			// Ö´ĞĞsqlÓï¾ä£¬×¢Òâ²»Òª´«µİ²ÎÊı
+			// æ‰§è¡Œsqlè¯­å¥ï¼Œæ³¨æ„ä¸è¦ä¼ é€’å‚æ•°
 			pstate.executeUpdate();
-			System.out.println("¸üĞÂ³É¹¦!");
+			System.out.println("æ›´æ–°æˆåŠŸ!");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -88,16 +88,16 @@ public class JDBCDemo3 {
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			// ×¢ÒâSQLÓï¾äÓÃÕ¼Î»·û"?"´úÌæÁËÔ­À´µÄÖµ
+			// æ³¨æ„SQLè¯­å¥ç”¨å ä½ç¬¦"?"ä»£æ›¿äº†åŸæ¥çš„å€¼
 			String sql = "delete from person where name = ?";
-			// »ñÈ¡PreparedStatement½Ó¿ÚµÄÊµÀı£¬×¢ÒâÒª½«sql×÷Îª²ÎÊı´«Èë
+			// è·å–PreparedStatementæ¥å£çš„å®ä¾‹ï¼Œæ³¨æ„è¦å°†sqlä½œä¸ºå‚æ•°ä¼ å…¥
 			pstate = con.prepareStatement(sql);
-			// ÉèÖÃÒª´«ÈëµÄÖµ´úÌæÉÏÎÄsqlÓï¾äÖĞµÄ"?"
-			// ×¢ÒâË÷Òı´Ó1¿ªÊ¼
+			// è®¾ç½®è¦ä¼ å…¥çš„å€¼ä»£æ›¿ä¸Šæ–‡sqlè¯­å¥ä¸­çš„"?"
+			// æ³¨æ„ç´¢å¼•ä»1å¼€å§‹
 			pstate.setString(1, name);
-			// Ö´ĞĞsqlÓï¾ä£¬×¢Òâ²»Òª´«µİ²ÎÊı
+			// æ‰§è¡Œsqlè¯­å¥ï¼Œæ³¨æ„ä¸è¦ä¼ é€’å‚æ•°
 			pstate.executeUpdate();
-			System.out.println("É¾³ı³É¹¦!");
+			System.out.println("åˆ é™¤æˆåŠŸ!");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -119,21 +119,21 @@ public class JDBCDemo3 {
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			// ×¢ÒâSQLÓï¾äÓÃÕ¼Î»·û"?"´úÌæÁËÔ­À´µÄÖµ
+			// æ³¨æ„SQLè¯­å¥ç”¨å ä½ç¬¦"?"ä»£æ›¿äº†åŸæ¥çš„å€¼
 			String sql = "select id, name, age, description from person where name=?";
-			// »ñÈ¡PreparedStatement½Ó¿ÚµÄÊµÀı£¬×¢ÒâÒª½«sql×÷Îª²ÎÊı´«Èë
+			// è·å–PreparedStatementæ¥å£çš„å®ä¾‹ï¼Œæ³¨æ„è¦å°†sqlä½œä¸ºå‚æ•°ä¼ å…¥
 			pstate = con.prepareStatement(sql);
-			// ÉèÖÃÒª´«ÈëµÄÖµ´úÌæÉÏÎÄsqlÓï¾äÖĞµÄ"?"
-			// ×¢ÒâË÷Òı´Ó1¿ªÊ¼
+			// è®¾ç½®è¦ä¼ å…¥çš„å€¼ä»£æ›¿ä¸Šæ–‡sqlè¯­å¥ä¸­çš„"?"
+			// æ³¨æ„ç´¢å¼•ä»1å¼€å§‹
 			pstate.setString(1, name);
-			// Ö´ĞĞsqlÓï¾ä£¬×¢Òâ²»Òª´«µİ²ÎÊı
+			// æ‰§è¡Œsqlè¯­å¥ï¼Œæ³¨æ„ä¸è¦ä¼ é€’å‚æ•°
 			result = pstate.executeQuery();
-			System.out.println("²éÑ¯½á¹ûÎª:");
+			System.out.println("æŸ¥è¯¢ç»“æœä¸º:");
 			if (result.next()) {
 				System.out.println(result.getInt("id") + "\t" + result.getString("name") + "\t" + result.getInt("age")
 						+ "\t" + result.getString("description"));
 			}
-			System.out.println("²éÑ¯³É¹¦!");
+			System.out.println("æŸ¥è¯¢æˆåŠŸ!");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -153,14 +153,14 @@ public class JDBCDemo3 {
 		Person p1 = new Person();
 		p1.setName("MirandaKerr");
 		p1.setAge(33);
-		p1.setDescription("°Ä´óÀûÑÇ³¬Ä£");
+		p1.setDescription("æ¾³å¤§åˆ©äºšè¶…æ¨¡");
 		Person p2 = new Person();
-		p2.setName("Íõ¼ÑÎÄ");
-		p2.setDescription("À×ÀÚµÄ³õÁµ");
+		p2.setName("ç‹ä½³æ–‡");
+		p2.setDescription("é›·ç£Šçš„åˆæ‹");
 		// insertPrepared(p1);
 		// updatePrepared(p2);
-		// deletePrepared("À×ÀÚ");
-		selectPrepared("Íõ¼ÑÎÄ");
+		// deletePrepared("é›·ç£Š");
+		selectPrepared("ç‹ä½³æ–‡");
 	}
 
 }

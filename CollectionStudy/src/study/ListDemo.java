@@ -4,35 +4,35 @@ import java.util.*;
 import javax.jws.soap.SOAPBinding;
 
 /*Collection
- *      --------List:ÔªËØÊÇÓĞĞòµÄ£¬ÔªËØ¿ÉÒÔÖØ¸´£¬ÒòÎª¸Ã¼¯ºÏÌåÏµÓĞË÷Òı
- *              ------ArrayList:µ×²ãµÄÊı¾İ½á¹¹Ê¹ÓÃµÄÊÇÊı×é½á¹¹,ÌØµã:²éÑ¯ËÙ¶ÈºÜ¿ì£¬µ«ÊÇÔöÉ¾ÉÔÂı£¬Ïß³Ì²»Í¬²½.
- *              ------LinkedList:µ×²ãÊ¹ÓÃµÄÊÇÁ´±íÊı¾İ½á¹¹. ÌØµã£ºÔöÉ¾ËÙ¶ÈºÜ¿ì£¬²éÑ¯ÉÔÂı.
- *              ------Vector:µ×²ãÊÇÊı×éÊı¾İ½á¹¹£¬Ïß³ÌÍ¬²½.
- *      --------Set:ÔªËØÊÇÎŞĞòµÄ£¬ÔªËØ²»¿ÉÒÔÖØ¸´
+ *      --------List:å…ƒç´ æ˜¯æœ‰åºçš„ï¼Œå…ƒç´ å¯ä»¥é‡å¤ï¼Œå› ä¸ºè¯¥é›†åˆä½“ç³»æœ‰ç´¢å¼•
+ *              ------ArrayList:åº•å±‚çš„æ•°æ®ç»“æ„ä½¿ç”¨çš„æ˜¯æ•°ç»„ç»“æ„,ç‰¹ç‚¹:æŸ¥è¯¢é€Ÿåº¦å¾ˆå¿«ï¼Œä½†æ˜¯å¢åˆ ç¨æ…¢ï¼Œçº¿ç¨‹ä¸åŒæ­¥.
+ *              ------LinkedList:åº•å±‚ä½¿ç”¨çš„æ˜¯é“¾è¡¨æ•°æ®ç»“æ„. ç‰¹ç‚¹ï¼šå¢åˆ é€Ÿåº¦å¾ˆå¿«ï¼ŒæŸ¥è¯¢ç¨æ…¢.
+ *              ------Vector:åº•å±‚æ˜¯æ•°ç»„æ•°æ®ç»“æ„ï¼Œçº¿ç¨‹åŒæ­¥.
+ *      --------Set:å…ƒç´ æ˜¯æ— åºçš„ï¼Œå…ƒç´ ä¸å¯ä»¥é‡å¤
  */
 
-/*ListÌØÓĞ·½·¨:·²ÊÇ¿ÉÒÔ²Ù×÷½Ç±êµÄ·½·¨¶¼ÊÇ¸ÃÌåÏµµÄÌØÓĞ·½·¨
+/*Listç‰¹æœ‰æ–¹æ³•:å‡¡æ˜¯å¯ä»¥æ“ä½œè§’æ ‡çš„æ–¹æ³•éƒ½æ˜¯è¯¥ä½“ç³»çš„ç‰¹æœ‰æ–¹æ³•
  * 
- * Ôö:add(index,element);
+ * å¢:add(index,element);
  *    addAll(index,Collection);
- * É¾:remove(index);
- * ¸Ä:set(index,element);
- * ²é:get(index);
+ * åˆ :remove(index);
+ * æ”¹:set(index,element);
+ * æŸ¥:get(index);
  *    subList(index_start,index_end);
  *    ListIterator();
  * 
- * List¼¯ºÏÌØÓĞµÄµü´úÆ÷¡£ ListIteratorÊÇIteratorµÄ×Ó½Ó¿Ú
- * ÔÚµü´úÊ±£¬²»¿ÉÒÔÍ¨¹ı¼¯ºÏ¶ÔÏóµÄ·½·¨²Ù×÷¼¯ºÏÖĞµÄÔªËØ£¬ÒòÎª
- * »á·¢Éú²¢·¢Òì³£ËùÒÔ£¬ÔÚµü´úÊ±Ö»ÄÜÊ¹ÓÃµü´úÆ÷µÄ·½·¨²Ù×÷ÔªËØ£¬
- * ¿ÉÊÇIterator·½·¨ÊÇÓĞÏŞµÄ£¬Ö»ÄÜ¶ÔÔªËØ½øĞĞÅĞ¶Ï£¬È¡³ö£¬É¾³ı
- * µÄ²Ù×÷¡£Èç¹ûÏëÒª½øĞĞÆäËû²Ù×÷ÈçÌí¼Ó£¬ĞŞ¸ÄµÈ£¬¾ÍĞèÒªÊ¹ÓÃÆä
- * ×Ó½Ó¿ÚListIterator¡£¸Ã½Ó¿ÚÖ»ÄÜÍ¨¹ıList¼¯ºÏµÄ µÄListIterator()
- * »ñÈ¡
+ * Listé›†åˆç‰¹æœ‰çš„è¿­ä»£å™¨ã€‚ ListIteratoræ˜¯Iteratorçš„å­æ¥å£
+ * åœ¨è¿­ä»£æ—¶ï¼Œä¸å¯ä»¥é€šè¿‡é›†åˆå¯¹è±¡çš„æ–¹æ³•æ“ä½œé›†åˆä¸­çš„å…ƒç´ ï¼Œå› ä¸º
+ * ä¼šå‘ç”Ÿå¹¶å‘å¼‚å¸¸æ‰€ä»¥ï¼Œåœ¨è¿­ä»£æ—¶åªèƒ½ä½¿ç”¨è¿­ä»£å™¨çš„æ–¹æ³•æ“ä½œå…ƒç´ ï¼Œ
+ * å¯æ˜¯Iteratoræ–¹æ³•æ˜¯æœ‰é™çš„ï¼Œåªèƒ½å¯¹å…ƒç´ è¿›è¡Œåˆ¤æ–­ï¼Œå–å‡ºï¼Œåˆ é™¤
+ * çš„æ“ä½œã€‚å¦‚æœæƒ³è¦è¿›è¡Œå…¶ä»–æ“ä½œå¦‚æ·»åŠ ï¼Œä¿®æ”¹ç­‰ï¼Œå°±éœ€è¦ä½¿ç”¨å…¶
+ * å­æ¥å£ListIteratorã€‚è¯¥æ¥å£åªèƒ½é€šè¿‡Listé›†åˆçš„ çš„ListIterator()
+ * è·å–
  */
 
 /*
- * List¼¯ºÏÅĞ¶ÁÔªËØÊÇ·ñÏàÍ¬,ÒÀ¾İµÄÊÇÔªËØµÄequals()·½·¨,ÎŞÂÛÊÇcontains()»òremove()
- * ·½·¨£¬¶¼ÒÀÀµÓÚequals()·½·¨.
+ * Listé›†åˆåˆ¤è¯»å…ƒç´ æ˜¯å¦ç›¸åŒ,ä¾æ®çš„æ˜¯å…ƒç´ çš„equals()æ–¹æ³•,æ— è®ºæ˜¯contains()æˆ–remove()
+ * æ–¹æ³•ï¼Œéƒ½ä¾èµ–äºequals()æ–¹æ³•.
  * 
  * 
  */
@@ -52,18 +52,18 @@ public class ListDemo {
 		al.add("jaiyou03");
 		al.add("jaiyou04");
 		al.add("jaiyou05");
-		System.out.println("Ô­¼¯ºÏÔªËØ:"+al);
-		//Ê¹ÓÃListIterator±éÀú
+		System.out.println("åŸé›†åˆå…ƒç´ :"+al);
+		//ä½¿ç”¨ListIteratoréå†
 		ListIterator lit = al.listIterator();
 		while(lit.hasNext()){
 			System.out.println(lit.next());
 		}
 		System.out.println();
-		//Ê¹ÓÃListIteratorµ¹Ğò±éÀú
+		//ä½¿ç”¨ListIteratorå€’åºéå†
 		while(lit.hasPrevious()){
 			System.out.println(lit.previous());
 		}
-		//Ê¹ÓÃListIterator½øĞĞÉ¾³ı£¬ĞŞ¸Ä£¬Ìí¼Ó²Ù×÷
+		//ä½¿ç”¨ListIteratorè¿›è¡Œåˆ é™¤ï¼Œä¿®æ”¹ï¼Œæ·»åŠ æ“ä½œ
 		while (lit.hasNext()) {
 			String object = (String) lit.next();
 			if (object.equals("jaiyou01")) {
@@ -77,7 +77,7 @@ public class ListDemo {
 			}
 			
 		}
-		System.out.println("½øĞĞ²Ù×÷ºóµÄ¼¯ºÏÔªËØ:");
+		System.out.println("è¿›è¡Œæ“ä½œåçš„é›†åˆå…ƒç´ :");
 		for(ListIterator it = al.listIterator(); it.hasNext();){
 			System.out.println(it.next());
 		}
@@ -85,28 +85,28 @@ public class ListDemo {
 	
 	public static void list_method(){
 		ArrayList al = new ArrayList();
-		//Ìí¼ÓÔªËØ
+		//æ·»åŠ å…ƒç´ 
 		al.add("jaiyou01");
 		al.add("jaiyou02");
 		al.add("jaiyou03");
 		al.add("jaiyou04");
 		al.add("jaiyou05");
-		System.out.println("Ô­¼¯ºÏÔªËØ:"+al);
-		//Í¨¹ı½Ç±êÌí¼ÓÔªËØ
+		System.out.println("åŸé›†åˆå…ƒç´ :"+al);
+		//é€šè¿‡è§’æ ‡æ·»åŠ å…ƒç´ 
 		/*al.add(1, "jiayou06");
-		System.out.println("Í¨¹ı½Ç±êÌí¼ÓÔªËØ:"+al);*/
-		//Í¨¹ı½Ç±êÉ¾³ıÔªËØ
+		System.out.println("é€šè¿‡è§’æ ‡æ·»åŠ å…ƒç´ :"+al);*/
+		//é€šè¿‡è§’æ ‡åˆ é™¤å…ƒç´ 
 		/*al.remove(2);
-		System.out.println("É¾³ıºó:"+al);*/
-		//Í¨¹ıĞŞ¸ÄÔªËØ
+		System.out.println("åˆ é™¤å:"+al);*/
+		//é€šè¿‡ä¿®æ”¹å…ƒç´ 
 		/*al.set(4, "jiayou007");
-		System.out.println("ĞŞ¸Äºó:"+al);*/
+		System.out.println("ä¿®æ”¹å:"+al);*/
 		
-		//Í¨¹ı½Ç±ê»ñÈ¡ÔªËØ
+		//é€šè¿‡è§’æ ‡è·å–å…ƒç´ 
 		/*for(int i=0 ;i<al.size(); i++){
 			System.out.println("get("+i+"):"+al.get(i));
 		}*/
-		//»ñÈ¡×Ó¼¯ºÏ
+		//è·å–å­é›†åˆ
 		List list = al.subList(2, 5);
 		System.out.println("sublist:"+list);
 	}

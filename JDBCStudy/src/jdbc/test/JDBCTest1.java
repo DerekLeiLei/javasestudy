@@ -17,10 +17,10 @@ public class JDBCTest1 {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			String sql = "insert into person(name,age,description) values('Íõ¼ÑÎÄ',21,'Ò»¸öÃÀÀöµÄÈË')";
+			String sql = "insert into person(name,age,description) values('ç‹ä½³æ–‡',21,'ä¸€ä¸ªç¾ä¸½çš„äºº')";
 			state = con.createStatement();
 			state.executeUpdate(sql);
-			System.out.println("Ö´ĞĞ³É¹¦!");
+			System.out.println("æ‰§è¡ŒæˆåŠŸ!");
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

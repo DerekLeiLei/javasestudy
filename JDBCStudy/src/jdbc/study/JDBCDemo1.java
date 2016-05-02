@@ -5,64 +5,64 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/* JDBC¼ò½é
- * JDBC:Java Database Connection,±íÊ¾Êı¾İ¿âÁ¬½Ó£¬ÊÇjavaÖĞ×¨ÃÅÌá¹©µÄÒ»×éÓÃÓÚ
- * ²Ù×÷Êı¾İ¿âµÄ±ê×¼,ËùÓĞµÄÊı¾İ¿âÉú²úÉÌÈç¹ûÒªÏëÎªjavaÌá¹©Ö§³Ö£¬Ôò±ØĞëÖ§³Ö´Ë±ê
- * ×¼£¬¼ÈÈ»ÊÇ±ê×¼µÄ»°£¬ËùÒÔËµJDBCÊµ¼ÊÉÏÊÇÒ»Ì×Àà¿âµÄ½Ó¿Ú¡£
+/* JDBCç®€ä»‹
+ * JDBC:Java Database Connection,è¡¨ç¤ºæ•°æ®åº“è¿æ¥ï¼Œæ˜¯javaä¸­ä¸“é—¨æä¾›çš„ä¸€ç»„ç”¨äº
+ * æ“ä½œæ•°æ®åº“çš„æ ‡å‡†,æ‰€æœ‰çš„æ•°æ®åº“ç”Ÿäº§å•†å¦‚æœè¦æƒ³ä¸ºjavaæä¾›æ”¯æŒï¼Œåˆ™å¿…é¡»æ”¯æŒæ­¤æ ‡
+ * å‡†ï¼Œæ—¢ç„¶æ˜¯æ ‡å‡†çš„è¯ï¼Œæ‰€ä»¥è¯´JDBCå®é™…ä¸Šæ˜¯ä¸€å¥—ç±»åº“çš„æ¥å£ã€‚
  * 
- * Ö÷ÒªµÄ²Ù×÷ÀàºÍ½Ó¿Ú:Connection½Ó¿Ú,Statement½Ó¿Ú£¬PreapredStatement½Ó¿Ú,
- * ResultSet½Ó¿Ú£¬CallableStatement½Ó¿Ú,DriverManagerÀà
+ * ä¸»è¦çš„æ“ä½œç±»å’Œæ¥å£:Connectionæ¥å£,Statementæ¥å£ï¼ŒPreapredStatementæ¥å£,
+ * ResultSetæ¥å£ï¼ŒCallableStatementæ¥å£,DriverManagerç±»
  */
 
-/*µ¼ÈëMySQLÊı¾İ¿âÇı¶¯
- * 1£¬ÔÚÏîÄ¿ÖĞĞÂ½¨libsÎÄ¼ş¼Ğ£¬½«½âÑ¹ºóµÄÇı¶¯°üµÄ.jarÎÄ¼ş¸´ÖÆµ½libsÎÄ¼ş¼ĞÖĞ.
- * 2,Ñ¡ÖĞ¸´ÖÆµ½ÎÄ¼ş¼ĞÖĞµÄ.jarÓÒ¼ü"Build Path"Ñ¡Ôñ"Add to Build Path"
+/*å¯¼å…¥MySQLæ•°æ®åº“é©±åŠ¨
+ * 1ï¼Œåœ¨é¡¹ç›®ä¸­æ–°å»ºlibsæ–‡ä»¶å¤¹ï¼Œå°†è§£å‹åçš„é©±åŠ¨åŒ…çš„.jaræ–‡ä»¶å¤åˆ¶åˆ°libsæ–‡ä»¶å¤¹ä¸­.
+ * 2,é€‰ä¸­å¤åˆ¶åˆ°æ–‡ä»¶å¤¹ä¸­çš„.jarå³é”®"Build Path"é€‰æ‹©"Add to Build Path"
  */
 
-/*ÊµÏÖ²Ù×÷
- * 1,¼ÓÔØÊı¾İ¿âÇı¶¯
- * Class.forName("Çı¶¯³ÌĞòÀà");
- * 2,Í¨¹ıÓÃ»§ÃûÃÜÂëºÜÁ¬½ÓµØÖ·»ñÈ¡Êı¾İ¿â¶ÔÏó
- * DriverManager.getConnection(Á¬½ÓµØÖ·,ÓÃ»§Ãû,ÃÜÂë);
- * 3,¹¹Ôì²åÈëµÄSQLÓï¾ä
- * 4,statementÊµÀı
+/*å®ç°æ“ä½œ
+ * 1,åŠ è½½æ•°æ®åº“é©±åŠ¨
+ * Class.forName("é©±åŠ¨ç¨‹åºç±»");
+ * 2,é€šè¿‡ç”¨æˆ·åå¯†ç å¾ˆè¿æ¥åœ°å€è·å–æ•°æ®åº“å¯¹è±¡
+ * DriverManager.getConnection(è¿æ¥åœ°å€,ç”¨æˆ·å,å¯†ç );
+ * 3,æ„é€ æ’å…¥çš„SQLè¯­å¥
+ * 4,statementå®ä¾‹
  * Statement stmt = conn.createStatement();
- * 5,Ö´ĞĞ²åÈëSQLÓï¾ä
+ * 5,æ‰§è¡Œæ’å…¥SQLè¯­å¥
  * stmt.executeQuery(sql);
- * 6,¹Ø±ÕÁ¬½Ó
+ * 6,å…³é—­è¿æ¥
  * stmt.close();
  * conn.close();
  */
 
 public class JDBCDemo1 {
-	// Êı¾İ¿âÁ¬½ÓµØÖ·
+	// æ•°æ®åº“è¿æ¥åœ°å€
 	public final static String URL = "jdbc:mysql://localhost:3306/jdbcstudy";
-	// ÓÃ»§Ãû
+	// ç”¨æˆ·å
 	public final static String USERNAME = "root";
-	// ÃÜÂë
+	// å¯†ç 
 	public final static String PASSWORD = "MirandaKerr615";
-	// Çı¶¯
+	// é©±åŠ¨
 	public final static String DRIVER = "com.mysql.jdbc.Driver";
 
 	/*
-	 * ²åÈë²Ù×÷
+	 * æ’å…¥æ“ä½œ
 	 */
 	public static void insert() {
 		Connection con = null;
 		Statement state = null;
 		try {
-			// 1£¬¼ÓÔØÊı¾İ¿âÇı¶¯³ÌĞò
+			// 1ï¼ŒåŠ è½½æ•°æ®åº“é©±åŠ¨ç¨‹åº
 			Class.forName(DRIVER);
-			// 2, »ñÈ¡Êı¾İ¿âÁ¬½Ó
+			// 2, è·å–æ•°æ®åº“è¿æ¥
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			// 3, ¹¹ÔìSQLÓï¾ä
-			String sql = "insert into person(name,age,description) values('Íõ¼ÎêÀ',30,'Ò»¸öÃÔÈËµÄÈË')";
-			// 4, ´´½¨Statement½Ó¿ÚÊµÀı
+			// 3, æ„é€ SQLè¯­å¥
+			String sql = "insert into person(name,age,description) values('ç‹å˜‰æ˜€',30,'ä¸€ä¸ªè¿·äººçš„äºº')";
+			// 4, åˆ›å»ºStatementæ¥å£å®ä¾‹
 			state = con.createStatement();
-			// 5, Ö´ĞĞSQLÓï¾ä
+			// 5, æ‰§è¡ŒSQLè¯­å¥
 			state.executeUpdate(sql);
-			// 6, ¹Ø±ÕÁ¬½Ó
-			System.out.println("²åÈë³É¹¦!");
+			// 6, å…³é—­è¿æ¥
+			System.out.println("æ’å…¥æˆåŠŸ!");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -79,7 +79,7 @@ public class JDBCDemo1 {
 	}
 
 	/*
-	 * ¸üĞÂ²Ù×÷
+	 * æ›´æ–°æ“ä½œ
 	 */
 	public static void update() {
 		Connection con = null;
@@ -88,8 +88,8 @@ public class JDBCDemo1 {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			state = con.createStatement();
-			String sql = "update person set description='Ò»¸öÒª³É¹¦µÄÈË!' where name='À×ÀÚ'";
-			System.out.println("¸üĞÂ³É¹¦!");
+			String sql = "update person set description='ä¸€ä¸ªè¦æˆåŠŸçš„äºº!' where name='é›·ç£Š'";
+			System.out.println("æ›´æ–°æˆåŠŸ!");
 			state.executeUpdate(sql);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -111,7 +111,7 @@ public class JDBCDemo1 {
 	}
     
 	/*
-	 * É¾³ı²Ù×÷
+	 * åˆ é™¤æ“ä½œ
 	 */
 	
 	public static void delete(){
@@ -120,10 +120,10 @@ public class JDBCDemo1 {
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			String sql = "delete from person where name='Íõ¼ÎêÀ'";
+			String sql = "delete from person where name='ç‹å˜‰æ˜€'";
 			state = con.createStatement();
 			state.executeUpdate(sql);
-			System.out.println("É¾³ı³É¹¦!");
+			System.out.println("åˆ é™¤æˆåŠŸ!");
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -143,21 +143,21 @@ public class JDBCDemo1 {
 		}
 	}
 	
-	//ÔÚSQLÖĞÓÃ±äÁ¿Ìæ»»²åÈëÖµ,Æ´½ÓSQLÓï¾ä
+	//åœ¨SQLä¸­ç”¨å˜é‡æ›¿æ¢æ’å…¥å€¼,æ‹¼æ¥SQLè¯­å¥
 	public static void insert1() {
 		Connection con = null;
 		Statement state = null;
-		String name = "ËÎ»ÛÇÇ";
+		String name = "å®‹æ…§ä¹”";
 		int age = 33;
-		String description = "À×ÀÚ³õÖĞÏ²»¶µÄÈË";
+		String description = "é›·ç£Šåˆä¸­å–œæ¬¢çš„äºº";
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			//×¢ÒâSQLÓï¾ä!
+			//æ³¨æ„SQLè¯­å¥!
 			String sql = "insert into person(name,age,description) values('"+name+"',"+age+",'"+description+"')";
 			state = con.createStatement();
 			state.executeUpdate(sql);
-			System.out.println("²åÈë³É¹¦!");
+			System.out.println("æ’å…¥æˆåŠŸ!");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

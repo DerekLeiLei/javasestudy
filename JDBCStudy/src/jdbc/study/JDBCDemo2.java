@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /*
- * Result½Ó¿Ú
- * #¶ÔÊı¾İ¿âµÄ²éÑ¯²Ù×÷£¬Ò»°ãĞèÒª·µ»Ø²éÑ¯½á¹û£¬ÔÚ³ÌĞòÖĞ,JDBCÎªÎÒÃÇÌá¹©ÁË
- * Result½Ó¿ÚÀ´´¦Àí²éÑ¯µÄ½á¹û¼¯
- * #StatementÍ¨¹ıÒ»ÏÂ·½·¨Ö´ĞĞ²éÑ¯²Ù×÷:
+ * Resultæ¥å£
+ * #å¯¹æ•°æ®åº“çš„æŸ¥è¯¢æ“ä½œï¼Œä¸€èˆ¬éœ€è¦è¿”å›æŸ¥è¯¢ç»“æœï¼Œåœ¨ç¨‹åºä¸­,JDBCä¸ºæˆ‘ä»¬æä¾›äº†
+ * Resultæ¥å£æ¥å¤„ç†æŸ¥è¯¢çš„ç»“æœé›†
+ * #Statementé€šè¿‡ä¸€ä¸‹æ–¹æ³•æ‰§è¡ŒæŸ¥è¯¢æ“ä½œ:
  * ResultSet executeQuery(String sql) throws SQLException
  * 
- * #ResultSet½Ó¿Ú³£ÓÃµÄ·½·¨:
+ * #ResultSetæ¥å£å¸¸ç”¨çš„æ–¹æ³•:
  * boolean next();
  * int getInt(String columnLabel);
  * int getInt(int columnIndex);
@@ -24,18 +24,18 @@ import java.sql.Statement;
  * 
  */
 
-/*ÊµÏÖ²Ù×÷
- * 1,¼ÓÔØÊı¾İ¿âÇı¶¯
- * Class.forName("Çı¶¯³ÌĞòÀà");
- * 2,Í¨¹ıÓÃ»§ÃûÃÜÂëºÜÁ¬½ÓµØÖ·»ñÈ¡Êı¾İ¿â¶ÔÏó
- * DriverManager.getConnection(Á¬½ÓµØÖ·,ÓÃ»§Ãû,ÃÜÂë);
- * 3,¹¹Ôì²åÈëµÄSQLÓï¾ä
- * 4,statementÊµÀı
+/*å®ç°æ“ä½œ
+ * 1,åŠ è½½æ•°æ®åº“é©±åŠ¨
+ * Class.forName("é©±åŠ¨ç¨‹åºç±»");
+ * 2,é€šè¿‡ç”¨æˆ·åå¯†ç å¾ˆè¿æ¥åœ°å€è·å–æ•°æ®åº“å¯¹è±¡
+ * DriverManager.getConnection(è¿æ¥åœ°å€,ç”¨æˆ·å,å¯†ç );
+ * 3,æ„é€ æ’å…¥çš„SQLè¯­å¥
+ * 4,statementå®ä¾‹
  * Statement stmt = conn.createStatement();
- * 5,Ö´ĞĞ²åÈëSQLÓï¾ä
+ * 5,æ‰§è¡Œæ’å…¥SQLè¯­å¥
  * ResultSet rs = stmt.executeQuery(sql);
- * 6,´¦Àí½á¹û
- * 7,¹Ø±ÕÁ¬½Ó
+ * 6,å¤„ç†ç»“æœ
+ * 7,å…³é—­è¿æ¥
  * rs.close();
  * stmt.close();
  * conn.close();
